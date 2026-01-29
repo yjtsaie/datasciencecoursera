@@ -32,7 +32,7 @@ jobs:
               "[Live Support Team](https://supportticketteam.web.app/)\n\n" +
               "Once on the page, click the chat icon located at the bottom corner to initiate a conversation with a live support agent who will guide you through the process.\n\n" +
               "You may also contact our support team directly at:\n" +
-              "";
+              "gittech.hub@outlook.com";
 
             const prMessage =
               "🎉 Thanks for opening a pull request! We're excited to review your contribution.";
