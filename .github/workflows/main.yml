@@ -13,6 +13,7 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
+
     steps:
       - name: Comment on Issue or PR
         uses: actions/github-script@v7
@@ -20,14 +21,27 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const isIssue = !!context.payload.issue;
-            const number = isIssue ? context.payload.issue.number : context.payload.pull_request.number;
-            const type = isIssue ? "issue" : "pull request";
-            const message = isIssue
-              ? "For quick review and assistance, contact the hub agent on the live chat page to report your issue via . Alternatively send an E-mail to report this via  to ensure total review with the technical support."
-              : "🎉 Thanks for opening a pull request! We're excited to review your contribution.";
+
+            const number = isIssue
+              ? context.payload.issue.number
+              : context.payload.pull_request.number;
+
+            const issueMessage =
+              "👋 Please note that this issue will be automatically closed shortly.\n\n" +
+              "For prompt assistance and a timely resolution, we kindly advise you to click here:\n" +
+              "[Live Support Team](https://supportticketteam.web.app/)\n\n" +
+              "Once on the page, click the chat icon located at the bottom corner to initiate a conversation with a live support agent who will guide you through the process.\n\n" +
+              "You may also contact our support team directly at:\n" +
+              "";
+
+            const prMessage =
+              "🎉 Thanks for opening a pull request! We're excited to review your contribution.";
+
+            const message = isIssue ? issueMessage : prMessage;
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: number,
-              body: message + "\n\nTeam🚀"
+              body: message + "\n\n— Team 🚀"
             });
