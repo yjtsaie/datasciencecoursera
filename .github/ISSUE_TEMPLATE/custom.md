@@ -13,3 +13,5 @@ We’ve reviewed your request and marked the issue as resolved on our end.
 
 Next Steps:
 For further assistance with any transaction, transfer, or coding concerns, please refer to the GitHub Action comment below to contact our support team. They will be happy to assist you.
+
+Issue Description:
